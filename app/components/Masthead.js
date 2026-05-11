@@ -1,4 +1,4 @@
-export default function Masthead({ date, issue }) {
+export default function Masthead({ date }) {
   return (
     <header className="bg-paper px-6 pt-6 pb-0">
       {/* Top thin rule */}
@@ -7,7 +7,15 @@ export default function Masthead({ date, issue }) {
       {/* Meta row */}
       <div className="flex justify-between items-center mb-2">
         <span className="font-mono text-[10px] tracking-widest uppercase text-ink/60">
-          Vol. I &nbsp;·&nbsp; No. {issue}
+          Created by{" "}
+          <a
+            href="https://animated-english-93e.notion.site/Krisha-Veera-s-Project-Portfolio-d8df759e5a3843779be8e992922af5c2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            Krisha Veera
+          </a>
         </span>
         <span className="font-mono text-[10px] tracking-widest uppercase text-ink/60">
           {date}

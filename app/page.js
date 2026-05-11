@@ -7,11 +7,14 @@ import WIIFYSection from "./components/WIIFYSection";
 import TodaysDrop from "./components/TodaysDrop";
 import Footer from "./components/Footer";
 
-const DATE = "Tuesday, April 22, 2026";
-const ISSUE = "42";
-
 export default async function Home() {
   const today = new Date().toISOString().slice(0, 10);
+  const displayDate = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   const { data, error } = await supabase
     .from("daily_content")
@@ -29,48 +32,30 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-paper text-ink">
-      {/* 1 · Ticker */}
-      <TickerBar date={DATE} />
-
-      {/* 2 · Masthead */}
-      <Masthead date={DATE} issue={ISSUE} />
-
-      {/* Thin red rule between masthead and nav */}
+      <TickerBar date={displayDate} stories={stories} />
+      <Masthead date={displayDate} />
       <div className="h-px bg-accent w-full" />
-
-      {/* 3 · Nav */}
       <NavBar />
 
-      {/* Paper body */}
       <div className="bg-paper">
-        {/* 4 · Today's Brief */}
         <div className="max-w-6xl mx-auto">
           <TodaysBrief stories={stories} />
         </div>
-
-        {/* 5 · Divider rule */}
         <div className="max-w-6xl mx-auto px-6">
           <div className="border-t-[3px] border-double border-ink my-0" />
         </div>
-
-        {/* 6 · WIIFY */}
         <div className="max-w-6xl mx-auto">
           <WIIFYSection decodes={decodes} />
         </div>
-
-        {/* Thin rule */}
         <div className="max-w-6xl mx-auto px-6">
           <div className="single-rule" />
         </div>
-
-        {/* 7 · Today's Drop */}
         <div className="max-w-6xl mx-auto">
           <TodaysDrop drops={drops} />
         </div>
       </div>
 
-      {/* 8 · Footer */}
-      <Footer date={DATE} issue={ISSUE} />
+      <Footer date={displayDate} issue="—" />
     </div>
   );
 }

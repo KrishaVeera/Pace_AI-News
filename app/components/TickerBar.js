@@ -1,6 +1,6 @@
 "use client";
 
-const TICKER_ITEMS = [
+const TICKER_FALLBACK = [
   "Gemini 3.1 drops with 2M token context window — free via Google AI Studio",
   "OpenAI shuts down Sora after 6 months — $15M/day burn with no revenue path",
   "Claude Opus 4.7 launches — built for multi-hour agentic workflows",
@@ -11,25 +11,23 @@ const TICKER_ITEMS = [
   "Agentic AI wave accelerates — tasks measured in hours, not seconds",
 ];
 
-export default function TickerBar({ date }) {
-  const tickerText = TICKER_ITEMS.join("   ·   ");
+export default function TickerBar({ date, stories }) {
+  const tickerText =
+    stories?.length >= 3
+      ? `${stories[0].headline}   ·   ${stories[1].headline}   ·   ${stories[2].headline}`
+      : TICKER_FALLBACK.join("   ·   ");
 
   return (
     <div className="bg-ink text-paper overflow-hidden border-b-2 border-accent">
       <div className="flex items-stretch">
-        {/* Static label */}
         <div className="flex-shrink-0 bg-accent text-paper px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest flex items-center z-10">
           Breaking
         </div>
-
-        {/* Scrolling ticker */}
         <div className="flex-1 overflow-hidden py-1.5 relative">
           <span className="ticker-track font-mono text-[11px] tracking-wide opacity-90">
             {tickerText}&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;{tickerText}
           </span>
         </div>
-
-        {/* Date stamp */}
         <div className="flex-shrink-0 border-l border-paper/20 px-3 py-1.5 font-mono text-[10px] tracking-widest opacity-70 flex items-center whitespace-nowrap">
           {date}
         </div>

@@ -32,7 +32,7 @@ export default async function ArchiveDatePage({ params }) {
     return (
       <div className="min-h-screen bg-paper text-ink">
         <TickerBar date={displayDate} />
-        <Masthead date={displayDate} issue="—" />
+        <Masthead date={displayDate} />
         <div className="h-px bg-accent w-full" />
         <NavBar />
         <div className="max-w-6xl mx-auto px-6 py-24 text-center">
@@ -54,7 +54,7 @@ export default async function ArchiveDatePage({ params }) {
   return (
     <div className="min-h-screen bg-paper text-ink">
       <TickerBar date={displayDate} />
-      <Masthead date={displayDate} issue="—" />
+      <Masthead date={displayDate} />
       <div className="h-px bg-accent w-full" />
       <NavBar />
 

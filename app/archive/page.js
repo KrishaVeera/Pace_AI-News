@@ -53,7 +53,7 @@ export default async function ArchivePage() {
   return (
     <div className="min-h-screen bg-paper text-ink">
       <TickerBar date={displayDate} />
-      <Masthead date={displayDate} issue="—" />
+      <Masthead date={displayDate} />
       <div className="h-px bg-accent w-full" />
       <NavBar />
 
