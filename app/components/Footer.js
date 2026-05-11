@@ -54,7 +54,7 @@ export default function Footer({ date, issue }) {
           {/* Brand */}
           <div>
             <h2 className="font-fraktur text-5xl text-paper mb-2">Pace</h2>
-            <p className="font-baskerville text-xs italic text-paper/50 leading-relaxed">
+            <p className="font-baskerville text-xs italic text-paper leading-relaxed">
               5 minutes a day.<br />
               One thing to build.<br />
               Never fall behind.
@@ -63,7 +63,7 @@ export default function Footer({ date, issue }) {
 
           {/* Links */}
           <div className="md:mx-auto">
-            <h3 className="font-mono text-[9px] uppercase tracking-widest text-paper/40 mb-3">
+            <h3 className="font-mono text-[9px] uppercase tracking-widest text-paper mb-3">
               Navigation
             </h3>
             <ul className="space-y-2">
@@ -76,7 +76,7 @@ export default function Footer({ date, issue }) {
                 <li key={label}>
                   <a
                     href={href}
-                    className="font-baskerville text-xs text-paper/60 hover:text-paper transition-colors"
+                    className="font-baskerville text-xs text-paper hover:text-paper/70 transition-colors"
                   >
                     {label}
                   </a>
@@ -87,10 +87,10 @@ export default function Footer({ date, issue }) {
 
           {/* Email signup */}
           <div id="subscribe">
-            <h3 className="font-mono text-[9px] uppercase tracking-widest text-paper/40 mb-3">
+            <h3 className="font-mono text-[9px] uppercase tracking-widest text-paper mb-3">
               Daily Briefing
             </h3>
-            <p className="font-baskerville text-xs text-paper/50 mb-4 leading-relaxed">
+            <p className="font-baskerville text-xs text-paper mb-4 leading-relaxed">
               Get Pace delivered to your inbox every morning at 7 AM.
             </p>
             {success ? (
@@ -109,7 +109,7 @@ export default function Footer({ date, issue }) {
                       className={`flex-1 font-mono text-[9px] uppercase tracking-widest px-2 py-1.5 border transition-colors ${
                         category === value
                           ? "bg-accent border-accent text-paper"
-                          : "bg-transparent border-paper/20 text-paper/50 hover:border-paper/50 hover:text-paper/80"
+                          : "bg-transparent border-paper/60 text-paper hover:border-paper hover:text-paper"
                       }`}
                     >
                       {label}
@@ -125,7 +125,7 @@ export default function Footer({ date, issue }) {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
                     required
-                    className="flex-1 bg-paper/10 border border-paper/20 text-paper placeholder:text-paper/30 font-mono text-xs px-3 py-2 focus:outline-none focus:border-paper/60 transition-colors"
+                    className="flex-1 bg-paper/10 border border-paper/40 text-paper placeholder:text-paper/70 font-mono text-xs px-3 py-2 focus:outline-none focus:border-paper transition-colors"
                   />
                   <button
                     type="submit"
@@ -146,10 +146,10 @@ export default function Footer({ date, issue }) {
 
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
-          <span className="font-mono text-[9px] tracking-widest text-paper/25 uppercase">
+          <span className="font-mono text-[9px] tracking-widest text-paper/60 uppercase">
             Vol. I · No. {issue} · {date}
           </span>
-          <span className="font-mono text-[9px] tracking-widest text-paper/25 uppercase">
+          <span className="font-mono text-[9px] tracking-widest text-paper/60 uppercase">
             © 2026 Pace Daily. All rights reserved.
           </span>
         </div>
