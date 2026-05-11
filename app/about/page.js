@@ -20,15 +20,6 @@ export default function AboutPage() {
 
       <div className="bg-paper">
         <div className="max-w-2xl mx-auto px-6 py-12">
-          {/* Section header */}
-          <div className="mb-10">
-            <div className="single-rule mb-2" />
-            <h2 className="font-playfair text-[10px] uppercase tracking-[0.35em] text-ink/50 text-center">
-              About Pace
-            </h2>
-            <div className="single-rule mt-2" />
-          </div>
-
           {/* Body */}
           <div className="space-y-6">
             <p className="font-baskerville text-sm leading-[1.9] text-ink drop-cap">

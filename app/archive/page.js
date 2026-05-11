@@ -59,15 +59,6 @@ export default async function ArchivePage() {
 
       <div className="bg-paper">
         <div className="max-w-6xl mx-auto px-6 py-8">
-          {/* Page header */}
-          <div className="mb-8">
-            <div className="single-rule mb-2" />
-            <h2 className="font-playfair text-[10px] uppercase tracking-[0.35em] text-ink/50 text-center">
-              Archive
-            </h2>
-            <div className="single-rule mt-2" />
-          </div>
-
           {rows.length === 0 ? (
             <p className="font-baskerville text-sm text-ink/50 text-center py-16">
               No editions available yet.
