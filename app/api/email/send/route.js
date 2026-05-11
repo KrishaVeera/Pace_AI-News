@@ -99,6 +99,9 @@ async function sendEmails(request) {
 }
 
 export async function GET(request) {
+  const headers = {};
+  request.headers.forEach((value, key) => { headers[key] = value; });
+  console.log('[email GET] incoming headers:', JSON.stringify(headers, null, 2));
   return sendEmails(request);
 }
 

@@ -90,6 +90,9 @@ async function runPipeline(request) {
 }
 
 export async function GET(request) {
+  const headers = {};
+  request.headers.forEach((value, key) => { headers[key] = value; });
+  console.log('[pipeline GET] incoming headers:', JSON.stringify(headers, null, 2));
   return runPipeline(request);
 }
 
