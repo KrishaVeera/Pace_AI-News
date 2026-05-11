@@ -7,7 +7,8 @@ function today() {
 
 export async function POST(request) {
   const secret = request.headers.get('x-pipeline-secret');
-  if (!secret || secret !== process.env.PIPELINE_SECRET) {
+  const isVercelCron = request.headers.get('x-vercel-cron') === '1';
+  if (!isVercelCron && (!secret || secret !== process.env.PIPELINE_SECRET)) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
