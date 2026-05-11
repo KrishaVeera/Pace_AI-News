@@ -8,8 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        paper: "#f5f0e8",
+        ink: "#1a1008",
+        "ink-light": "#3d2e1e",
+        accent: "#c8102e",
+        "ticker-bg": "#1a1008",
+      },
+      fontFamily: {
+        playfair: ["var(--font-playfair)", "Georgia", "serif"],
+        baskerville: ["var(--font-libre-baskerville)", "Georgia", "serif"],
+        fraktur: ["var(--font-unifraktur)", "serif"],
+        mono: ["var(--font-source-code-pro)", "Courier New", "monospace"],
       },
     },
   },

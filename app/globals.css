@@ -3,25 +3,83 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f5f0e8;
+  --foreground: #1a1008;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Ticker animation — seamless loop: content is doubled, so -50% = exactly one copy */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 34s linear infinite;
+  will-change: transform;
+}
+
+/* Column rule dividers */
+.col-rule {
+  border-right: 1px solid #1a1008;
+}
+
+/* Terminal prompt blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink::after {
+  content: "█";
+  animation: blink 1s step-start infinite;
+  margin-left: 2px;
+  font-size: 0.75em;
+}
+
+/* Newspaper double-rule border */
+.double-rule {
+  border-top: 3px double #1a1008;
+}
+
+.single-rule {
+  border-top: 1px solid #1a1008;
+}
+
+/* Drop cap */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 3.5rem;
+  line-height: 0.85;
+  margin-right: 6px;
+  margin-top: 4px;
+  font-family: var(--font-playfair);
+  font-weight: 900;
+  color: #1a1008;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* Paper grain texture — applied to all bg-paper surfaces */
+.bg-paper {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Tab panel fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.panel-fade-in {
+  animation: fadeIn 0.18s ease-out both;
 }
