@@ -6,9 +6,9 @@ function today() {
 }
 
 async function runPipeline(request) {
-  const secret = request.headers.get('x-pipeline-secret');
-  const isVercelCron = request.headers.get('x-vercel-cron') === '1';
-  if (!isVercelCron && (!secret || secret !== process.env.PIPELINE_SECRET)) {
+  const isManualTrigger = request.headers.get('x-pipeline-secret') === process.env.PIPELINE_SECRET;
+  const isVercelCron = request.headers.get('x-vercel-cron-schedule') !== null;
+  if (!isManualTrigger && !isVercelCron) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
