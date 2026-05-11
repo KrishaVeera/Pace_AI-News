@@ -5,7 +5,7 @@ function today() {
   return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
 }
 
-export async function POST(request) {
+async function runPipeline(request) {
   const secret = request.headers.get('x-pipeline-secret');
   const isVercelCron = request.headers.get('x-vercel-cron') === '1';
   if (!isVercelCron && (!secret || secret !== process.env.PIPELINE_SECRET)) {
@@ -87,4 +87,12 @@ export async function POST(request) {
   }
 
   return Response.json({ success: true, date }, { status: 200 });
+}
+
+export async function GET(request) {
+  return runPipeline(request);
+}
+
+export async function POST(request) {
+  return runPipeline(request);
 }

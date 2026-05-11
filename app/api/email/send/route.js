@@ -21,7 +21,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function POST(request) {
+async function sendEmails(request) {
   const secret = request.headers.get('x-pipeline-secret');
   const isVercelCron = request.headers.get('x-vercel-cron') === '1';
   if (!isVercelCron && (!secret || secret !== process.env.PIPELINE_SECRET)) {
@@ -96,4 +96,12 @@ export async function POST(request) {
       uiUx:        groups.uiUx.length,
     },
   });
+}
+
+export async function GET(request) {
+  return sendEmails(request);
+}
+
+export async function POST(request) {
+  return sendEmails(request);
 }
