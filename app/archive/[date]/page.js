@@ -22,11 +22,15 @@ export default async function ArchiveDatePage({ params }) {
   const { date } = params;
   const displayDate = formatDisplayDate(date);
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("daily_content")
-    .select("stories, decodes, drops")
+    .select("*")
     .eq("date", date)
-    .maybeSingle();
+    .single();
+
+  console.log("date param:", date);
+  console.log("data:", data);
+  console.log("error:", error);
 
   if (!data) {
     return (
