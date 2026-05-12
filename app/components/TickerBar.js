@@ -2,9 +2,6 @@
 
 import { useState, useEffect } from "react";
 
-const SYMBOLS = ["AAPL", "GOOGL", "MSFT", "NVDA", "META", "AMZN", "^GSPC", "^DJI"];
-const DISPLAY = { "^GSPC": "S&P 500", "^DJI": "DOW" };
-
 const HEADLINE_FALLBACK = [
   "Gemini 3.1 drops with 2M token context window — free via Google AI Studio",
   "OpenAI shuts down Sora after 6 months — $15M/day burn with no revenue path",
@@ -16,43 +13,31 @@ const HEADLINE_FALLBACK = [
   "Agentic AI wave accelerates — tasks measured in hours, not seconds",
 ];
 
-async function fetchStock(symbol) {
-  const res = await fetch(
-    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?interval=1d`
-  );
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const json = await res.json();
-  const meta = json.chart.result[0].meta;
-  const price = meta.regularMarketPrice;
-  const prev = meta.previousClose ?? meta.chartPreviousClose ?? price;
-  const pct = prev ? ((price - prev) / prev) * 100 : 0;
-  return { symbol, price, pct };
-}
-
 function stockNodes(stocks, keyPrefix) {
-  return stocks.map((s, i) => {
-    const name = DISPLAY[s.symbol] ?? s.symbol;
-    const isPos = s.pct >= 0;
-    return (
-      <span key={`${keyPrefix}${i}`} className="whitespace-nowrap">
-        {i > 0 && <span className="mx-3 opacity-40">·</span>}
-        <span className="font-semibold">{name}</span>
-        {" $"}{s.price.toFixed(2)}{" "}
-        <span style={{ color: isPos ? "#4ade80" : "#f87171" }}>
-          {isPos ? "▲" : "▼"} {isPos ? "+" : ""}{Math.abs(s.pct).toFixed(2)}%
-        </span>
+  return stocks.map((s, i) => (
+    <span key={`${keyPrefix}${i}`} className="whitespace-nowrap">
+      {i > 0 && <span className="mx-3 opacity-40">·</span>}
+      <span className="font-semibold">{s.displayName}</span>
+      {" $"}{s.price.toFixed(2)}{" "}
+      <span style={{ color: s.positive ? "#4ade80" : "#f87171" }}>
+        {s.positive ? "▲" : "▼"} {s.positive ? "+" : ""}{Math.abs(s.changePercent).toFixed(2)}%
       </span>
-    );
-  });
+    </span>
+  ));
 }
 
 export default function TickerBar({ date, stories }) {
   const [stocks, setStocks] = useState(null);
 
   async function loadStocks() {
-    const results = await Promise.allSettled(SYMBOLS.map(fetchStock));
-    const ok = results.filter((r) => r.status === "fulfilled").map((r) => r.value);
-    setStocks(ok.length >= 3 ? ok : []);
+    try {
+      const res = await fetch("/api/stocks");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      setStocks(Array.isArray(data) && data.length >= 3 ? data : []);
+    } catch {
+      setStocks([]);
+    }
   }
 
   useEffect(() => {
