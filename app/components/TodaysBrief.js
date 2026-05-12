@@ -37,12 +37,12 @@ export default function TodaysBrief({ stories }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-ink/25">
         {activeStories.map((story, i) => (
           <article
-            key={i}
+            key={story.number ?? i}
             className={`px-0 md:px-5 py-4 md:py-0 ${i === 0 ? "md:pl-0" : ""} ${i === activeStories.length - 1 ? "md:pr-0" : ""}`}
           >
             {/* Story number */}
             <span className="font-mono text-[10px] text-accent tracking-widest uppercase block mb-2">
-              Story {story.number}
+              Story {story.number ?? i + 1}
             </span>
 
             {/* Headline */}
