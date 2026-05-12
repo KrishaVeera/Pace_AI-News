@@ -91,7 +91,7 @@ export default function Footer({ date, issue }) {
               Daily Briefing
             </h3>
             <p className="font-baskerville text-xs text-paper mb-4 leading-relaxed">
-              Get Pace delivered to your inbox every morning at 7 AM.
+              Get Pace delivered to your inbox every morning at 8 AM.
             </p>
             {success ? (
               <p className="font-mono text-xs text-accent tracking-wide">
