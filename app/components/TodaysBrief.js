@@ -59,9 +59,16 @@ export default function TodaysBrief({ stories }) {
             </p>
 
             {/* Read more */}
-            <button className="mt-3 font-mono text-[10px] uppercase tracking-widest text-accent hover:underline">
-              Read more →
-            </button>
+            {story.url && (
+              <a
+                href={story.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block font-mono text-[10px] uppercase tracking-widest text-accent hover:underline"
+              >
+                Read more →
+              </a>
+            )}
           </article>
         ))}
       </div>
