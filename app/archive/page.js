@@ -31,9 +31,7 @@ export default async function ArchivePage() {
     .select("date, stories")
     .order("date", { ascending: false });
 
-  const rows = data ?? [];
-  // Drop the oldest entry once we have more than 2
-  const displayRows = rows.length > 2 ? rows.slice(0, -1) : rows;
+  const displayRows = data ?? [];
 
   return (
     <div className="min-h-screen bg-paper text-ink">
