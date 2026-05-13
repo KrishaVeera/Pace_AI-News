@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { supabase } from "@/app/lib/supabase";
 import TickerBar from "./components/TickerBar";
 import Masthead from "./components/Masthead";
