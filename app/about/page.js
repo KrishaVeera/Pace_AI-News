@@ -21,18 +21,9 @@ export default function AboutPage() {
       <div className="bg-paper">
         <div className="max-w-[680px] mx-auto px-6 py-12">
 
-          {/* Headline */}
-          <div className="mb-10">
-            <div className="single-rule mb-2" />
-            <h1 className="font-playfair font-bold text-3xl leading-tight text-ink text-center">
-              About Pace
-            </h1>
-            <div className="single-rule mt-4" />
-          </div>
-
           {/* Body */}
           <div className="space-y-6">
-            <p className="font-baskerville text-sm leading-[1.9] text-ink drop-cap">
+            <p className="font-baskerville text-sm leading-[1.9] text-ink">
               Most AI news is written for investors and executives. Pace is written for you.
             </p>
             <p className="font-baskerville text-sm leading-[1.9] text-ink">
