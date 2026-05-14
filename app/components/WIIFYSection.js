@@ -44,7 +44,7 @@ export default function WIIFYSection({ decodes }) {
       {/* Section header */}
       <div className="mb-5">
         <div className="single-rule mb-2" />
-        <h2 className="font-playfair text-[10px] uppercase tracking-[0.35em] text-ink/50 text-center">
+        <h2 className="font-playfair text-[10px] uppercase tracking-[0.35em] text-ink text-center">
           What&rsquo;s In It For You
         </h2>
         <div className="single-rule mt-2" />

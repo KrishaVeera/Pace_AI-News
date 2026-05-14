@@ -27,7 +27,7 @@ export default function TodaysBrief({ stories }) {
       {/* Section header */}
       <div className="mb-4">
         <div className="single-rule mb-2" />
-        <h2 className="font-playfair text-[10px] uppercase tracking-[0.35em] text-ink/50 text-center">
+        <h2 className="font-playfair text-[10px] uppercase tracking-[0.35em] text-ink text-center">
           Today&rsquo;s Brief
         </h2>
         <div className="single-rule mt-2" />
