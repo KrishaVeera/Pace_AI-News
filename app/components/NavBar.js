@@ -28,9 +28,11 @@ export default function NavBar() {
         <Link href="/" className={cls("Today", 0)}>
           Today
         </Link>
-        <Link href="/archive" className={cls("Archive", 1)}>
-          Archive
-        </Link>
+        <span className="hidden md:block">
+          <Link href="/archive" className={cls("Archive", 1)}>
+            Archive
+          </Link>
+        </span>
         <Link href="/about" className={cls("About", 2)}>
           About
         </Link>

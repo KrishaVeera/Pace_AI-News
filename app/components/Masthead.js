@@ -20,7 +20,7 @@ export default function Masthead({ date }) {
         <span className="font-mono text-[10px] tracking-widest uppercase text-ink/60">
           {date}
         </span>
-        <span className="font-mono text-[10px] tracking-widest uppercase text-ink/60">
+        <span className="hidden md:block font-mono text-[10px] tracking-widest uppercase text-ink/60">
           Free Daily Edition
         </span>
       </div>
