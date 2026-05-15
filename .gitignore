@@ -13,6 +13,9 @@ out/
 # Claude Code memory
 .claude/
 
+# generated previews
+email-preview.html
+
 # OS
 .DS_Store
 Thumbs.db
