@@ -38,7 +38,7 @@ export default function Masthead({ date }) {
       {/* Tagline */}
       <div className="text-center mb-3">
         <p className="font-baskerville text-xs italic tracking-[0.2em] text-ink/70 uppercase">
-          5 minutes a day.&ensp;One thing to build.&ensp;Never fall behind.
+          Know what&rsquo;s changed. Build what matters.
         </p>
       </div>
 

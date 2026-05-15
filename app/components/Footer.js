@@ -55,9 +55,7 @@ export default function Footer({ date, issue }) {
           <div>
             <h2 className="font-fraktur text-5xl text-paper mb-2">Pace</h2>
             <p className="font-baskerville text-xs italic text-paper leading-relaxed">
-              5 minutes a day.<br />
-              One thing to build.<br />
-              Never fall behind.
+              Know what&rsquo;s changed. Build what matters.
             </p>
           </div>
 

@@ -23,23 +23,25 @@ export default function AboutPage() {
 
           {/* Body */}
           <div className="space-y-6">
-            <p className="font-baskerville text-sm leading-[1.9] text-ink">
-              Most AI news is written for investors and executives. Pace is written for you.
+            <p className="font-baskerville text-sm leading-[1.9] text-ink italic">
+              The news cycle moves fast. But reading about AI and actually being ready for it
+              are two very different things.
             </p>
             <p className="font-baskerville text-sm leading-[1.9] text-ink">
-              The AI world is changing faster than anyone can keep up with — and if you&rsquo;re
-              a student or new grad, that anxiety is real. Which tools actually matter? Which
-              skills are becoming more valuable? What&rsquo;s hype and what&rsquo;s not?
+              Most mornings, you can find a dozen headlines about the latest model release, the
+              next wave of automation, the jobs being reshaped. You read them, feel vaguely
+              anxious, and move on. Nothing sticks. Nothing changes.
             </p>
             <p className="font-baskerville text-sm leading-[1.9] text-ink">
-              Pace cuts through the noise every morning in under 5 minutes. Three stories that
-              actually matter, decoded for your track — whether you&rsquo;re building, analyzing
-              data, or designing. Plus one concrete project prompt to start your day with
-              something real.
+              Pace was built for a different kind of morning.
             </p>
             <p className="font-baskerville text-sm leading-[1.9] text-ink">
-              No doom. No hype. No 47-tab rabbit holes. Just what changed, why it matters to
-              you, and what to build because of it.
+              We believe students and new grads deserve more than just information &mdash; they
+              deserve context. Not just what happened, but what it means for them, and what they
+              can do about it today. Three stories. A decode for your track. One thing to build.
+            </p>
+            <p className="font-baskerville text-sm leading-[1.9] text-ink">
+              Because the best way to stop feeling behind is to start building forward.
             </p>
           </div>
 
