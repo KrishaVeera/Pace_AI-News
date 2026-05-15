@@ -49,14 +49,27 @@ async function sendEmails(request) {
     );
   }
 
-  // Fetch all subscribers
-  const { data: subscribers, error: subError } = await supabase
-    .from('subscribers')
-    .select('email, category');
+  const testEmail = new URL(request.url).searchParams.get('testEmail');
 
-  if (subError) {
-    console.error('Supabase subscribers fetch error:', subError);
-    return Response.json({ error: 'Failed to fetch subscribers' }, { status: 500 });
+  let subscribers;
+  if (testEmail) {
+    // Test mode: send one of each category variant to the test address
+    subscribers = [
+      { email: testEmail, category: 'coder' },
+      { email: testEmail, category: 'data-science' },
+      { email: testEmail, category: 'ui-ux' },
+    ];
+    console.log(`[test mode] sending to ${testEmail}`);
+  } else {
+    const { data, error: subError } = await supabase
+      .from('subscribers')
+      .select('email, category');
+
+    if (subError) {
+      console.error('Supabase subscribers fetch error:', subError);
+      return Response.json({ error: 'Failed to fetch subscribers' }, { status: 500 });
+    }
+    subscribers = data;
   }
 
   // Group by category

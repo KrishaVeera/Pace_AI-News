@@ -1,5 +1,14 @@
 (async () => {
-  const res = await fetch('http://localhost:3000/api/email/send', {
+  const isTest = process.argv.includes('--test');
+  const TEST_EMAIL = 'veerakrisha123@gmail.com';
+
+  const url = isTest
+    ? `http://localhost:3000/api/email/send?testEmail=${encodeURIComponent(TEST_EMAIL)}`
+    : 'http://localhost:3000/api/email/send';
+
+  if (isTest) console.log(`[test mode] sending to ${TEST_EMAIL} only`);
+
+  const res = await fetch(url, {
     method: 'POST',
     headers: {
       'x-pipeline-secret': 'mysecretkey123',
