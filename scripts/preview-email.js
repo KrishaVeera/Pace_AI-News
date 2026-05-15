@@ -25,14 +25,13 @@ function loadEnv() {
 (async () => {
   loadEnv();
 
-  const url  = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key  = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const date = new Date().toISOString().slice(0, 10);
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  console.log(`Fetching content for ${date}...`);
+  console.log('Fetching most recent content...');
 
   const res = await fetch(
-    `${url}/rest/v1/daily_content?date=eq.${date}&select=stories,decodes,drops`,
+    `${url}/rest/v1/daily_content?select=*&order=date.desc&limit=1`,
     {
       headers: {
         apikey:        key,
@@ -50,9 +49,11 @@ function loadEnv() {
   const data = rows[0] ?? null;
 
   if (!data) {
-    console.error(`No content found for ${date} — run the pipeline first.`);
+    console.error('No content found — run the pipeline first.');
     process.exit(1);
   }
+
+  console.log(`Using content from ${data.date}`);
 
   const html = buildDailyEmail('coder', data);
   const outPath = join(__dirname, '../email-preview.html');
