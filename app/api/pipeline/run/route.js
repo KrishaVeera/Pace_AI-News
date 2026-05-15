@@ -2,7 +2,9 @@ import { fetchArticles, generateDailyContent } from '@/lib/pipeline';
 import { supabase } from '@/app/lib/supabase';
 
 function today() {
-  return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  const now = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+  const dateStr = new Date(now).toISOString().split('T')[0];
+  return dateStr;
 }
 
 async function runPipeline(request) {

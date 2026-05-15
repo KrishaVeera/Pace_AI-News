@@ -5,7 +5,8 @@ import { buildDailyEmail } from '@/lib/emailTemplate';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 function today() {
-  return new Date().toISOString().slice(0, 10);
+  const now = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+  return new Date(now).toISOString().split('T')[0];
 }
 
 function formatDateLong(dateStr) {
@@ -28,14 +29,15 @@ async function sendEmails(request) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const date = today();
-
-  // Fetch today's content
+  // Fetch most recent content row
   const { data: contentRow, error: contentError } = await supabase
     .from('daily_content')
-    .select('stories, decodes, drops')
-    .eq('date', date)
-    .maybeSingle();
+    .select('date, stories, decodes, drops')
+    .order('date', { ascending: false })
+    .limit(1)
+    .single();
+
+  const date = contentRow?.date ?? today();
 
   if (contentError) {
     console.error('Supabase content fetch error:', contentError);

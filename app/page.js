@@ -10,8 +10,10 @@ import TodaysDrop from "./components/TodaysDrop";
 import Footer from "./components/Footer";
 
 export default async function Home() {
-  const today = new Date().toISOString().slice(0, 10);
-  const displayDate = new Date().toLocaleDateString("en-US", {
+  const now = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+  const today = new Date(now);
+  const dateStr = today.toISOString().split('T')[0];
+  const displayDate = today.toLocaleDateString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -21,10 +23,10 @@ export default async function Home() {
   const { data, error } = await supabase
     .from("daily_content")
     .select("stories, decodes, drops")
-    .eq("date", today)
+    .eq("date", dateStr)
     .maybeSingle();
 
-  console.log("[daily_content] queried date:", today);
+  console.log("[daily_content] queried date:", dateStr);
   console.log("[daily_content] data:", JSON.stringify(data, null, 2));
   if (error) console.error("[daily_content] error:", error);
 
