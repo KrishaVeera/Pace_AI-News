@@ -38,7 +38,7 @@ export default function AboutPage() {
             <p className="font-baskerville text-sm leading-[1.9] text-ink">
               We believe students and new grads deserve more than just information &mdash; they
               deserve context. Not just what happened, but what it means for them, and what they
-              can do about it today. Three stories. Made relevant to you. One thing to build.
+              can do about it today.
             </p>
             <p className="font-baskerville text-sm leading-[1.9] text-ink">
               Because the best way to stop feeling behind is to start building forward.
